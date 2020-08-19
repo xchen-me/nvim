@@ -27,5 +27,26 @@
       "open"
     ],
     "v": "open:vsplit"
+  },
+  // snippets extensions. e.g., let rmarkdown files load latex snippets
+  "coc.source.ultisnips.filetypes": [
+    "tex"
+  ],
+  "snippets.extends": {
+    "cpp": [
+      "c"
+    ],
+    "markdown": [
+      "tex"
+    ],
+    "rmarkdown": [
+      "tex"
+    ],
+    "javascriptreact": [
+      "javascript"
+    ],
+    "typescript": [
+      "javascript"
+    ]
   }
 }

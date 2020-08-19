@@ -1,13 +1,17 @@
+" let maplocalleader = "\<shift>"
 let g:tex_flavor='latex'
 let g:vimtex_view_method='skim'
+" let g:vimtex_view_method='zathura'
 let g:vimtex_indent_enabled=1
-let g:vimtex_toc_enabled=1
+" let g:vimtex_toc_enabled=1
 let g:vimtex_quickfix_mode=1
 let g:vimtex_fold_enabled=1
 let g:vimtex_fold_manual=0
 let g:vimtex_log_ignore = ['Underfull', 'Overfull']
+" let g:vimtex_compiler_progname = '~/Library/Python/3.7/bin/nvr'
+" let g:vimtex_compiler_progname = '~/Library/Python/3.7/bin/nvr'
 autocmd Filetype tex,latex set nofoldenable
-nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
+" nnoremap <localleader>lt :call vimtex#fzf#run()<cr>
 " let g:vimtex_fold_levelmarker = '➜'
 let g:tex_conceal='abdmg'
 " let g:tex_conceal =''

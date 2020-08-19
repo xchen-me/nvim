@@ -19,17 +19,18 @@ if !isdirectory($HOME."/.local/share/fzf-history")
 endif
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
-map <C-f> :Files<CR>
-map <leader>b :Buffers<CR>
-nnoremap <leader>g :Rg<CR>
+" nmap <C-f> :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>g :GFiles<CR>
 nnoremap <leader>t :Tags<CR>
+" nnoremap <leader>t :Tags<CR>
 nnoremap <leader>m :Marks<CR>
 
 nnoremap <D-p> :Files<CR>
 nnoremap <D-f> :CocSearch 
 nnoremap <D-S-f> :Rg<CR>
 " sublime text / vs code like command palette
-nmap <D-S-p> :Commands<CR>
+nnoremap <D-S-p> :Commands<CR>
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
@@ -84,4 +85,4 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 command! -bang -nargs=* GGrep
   \ call fzf#vim#grep(
   \   'git grep --line-number '.shellescape(<q-args>), 0,
-  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0):
+  \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
