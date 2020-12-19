@@ -7,7 +7,9 @@
 
   [[./img/ranger.png][Split windows]]
 
+  #+begin_export markdown
   ![](./img/ranger.png)
+  #+end_export
 
   [[./img/split window.jpg][Split windows]]
 
