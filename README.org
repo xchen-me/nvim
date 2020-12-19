@@ -5,9 +5,9 @@
 - one build, diverse realizations everywhere: enjoy consistent performance in the commandline, in a packaged GUI such as [[https://github.com/qvacua/vimr][vimR]], or in [[https://github.com/asvetliakov/vscode-neovim][VS Code]]!
 - modern-looking:
 
-<p align="center"><img src="./img/ranger.png" /></p>
-
   [[./img/ranger.png][Split windows]]
+
+  ![](./img/ranger.png)
 
   [[./img/split window.jpg][Split windows]]
 
