@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/Users/xuchen/Dropbox/Apps/nvim_repository/nvim/plug-config'
+let g:netrw_dirhist_7='/Users/xuchen/Dropbox/Apps'
+let g:netrw_dirhist_6='/Users/xuchen/Dropbox/Apps/nvim_repository'
+let g:netrw_dirhist_5='/Users/xuchen/Dropbox/Apps/nvim_repository/nvim'
+let g:netrw_dirhist_4='/Users/xuchen/Dropbox/Apps/nvim_repository/nvim/plug-config'
+let g:netrw_dirhist_3='/Users/xuchen/Dropbox/Apps/nvim_repository/nvim/vim-plug'
+let g:netrw_dirhist_2='/Users/xuchen/Dropbox/Apps/nvim_repository/nvim'
+let g:netrw_dirhist_1='/Users/xuchen/Dropbox/Apps/nvim_repository/nvim/plug-config'
