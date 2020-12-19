@@ -5,6 +5,8 @@
 - one build, diverse realizations everywhere: enjoy consistent performance in the commandline, in a packaged GUI such as [[https://github.com/qvacua/vimr][vimR]], or in [[https://github.com/asvetliakov/vscode-neovim][VS Code]]!
 - modern-looking:
 
+[[./img/ranger.png][Browsing directories]]
+
   [[file:img/ranger.png][Browsing directories]]
 
   [[file:img/split window.jpg][Split windows]]
