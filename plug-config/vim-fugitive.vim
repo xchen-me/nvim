@@ -1,1 +1,2 @@
-nnoremap <Leader>gg :G<CR>
+"more consistent keymapping
+nnoremap <Leader>gg :G<CR>  
