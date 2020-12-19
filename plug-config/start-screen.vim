@@ -21,5 +21,4 @@ let g:startify_bookmarks = [
       \{'z': '~/.zshrc'},
       \{'n': '~/Dropbox/mNotes'} ]
       " \{'v': '~/Dropbox/Apps/Vim\ nvim'},
-      " \{'s': '~/Dropbox/Apps/Vim\ nvim/myspacevim.vim'}, 
       " \{'w': '~/Dropbox/mwiki'},

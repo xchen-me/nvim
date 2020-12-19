@@ -23,16 +23,18 @@ autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
+nnoremap <leader>op :Ranger<CR>
+nnoremap <leader>ot :FloatermToggle<CR>
 " Single mappings
-let g:which_key_map['f'] = [ ':Ranger'                    , 'Ranger files manager' ]
-let g:which_key_map['h'] = [ '<C-W>s'                     , 'split below']
-let g:which_key_map['S'] = [ ':Startify'                  , 'start screen' ]
-let g:which_key_map['T'] = [ ':Rg'                        , 'search text' ]
-let g:which_key_map['v'] = [ '<C-W>v'                     , 'split right']
-let g:which_key_map['w'] = [ ':e ~/Dropbox/mNotes/index.Rmd'                , 'go to mwiki']
-let g:which_key_map['bd'] = [ ':Bclose'                       , 'delete current buffer']
-let g:which_key_map['z'] = [ 'Goyo'                       , 'zen' ]
-let g:which_key_map['t'] = [':FloatermToggle'             , 'toggle float terminal']
+let g:which_key_map['op'] = [ ':Ranger'                    , 'Ranger files manager' ]
+let g:which_key_map['h']  = [ '<C-W>s'                     , 'split below']
+let g:which_key_map['S']  = [ ':Startify'                  , 'start screen' ]
+let g:which_key_map['T']  = [ ':Rg'                        , 'search text' ]
+let g:which_key_map['v']  = [ '<C-W>v'                     , 'split right']
+let g:which_key_map['bd'] = [ ':Bclose'                    , 'delete current buffer']
+let g:which_key_map['z']  = [ 'Goyo'                       , 'zen' ]
+let g:which_key_map['tz'] = [ 'Goyo'                       , 'zen' ]
+let g:which_key_map['ot'] = [ ':FloatermToggle'            , 'toggle float terminal']
 
 " " f is for file
 " let g:which_key_map.f = {

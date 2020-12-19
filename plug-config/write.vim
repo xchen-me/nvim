@@ -8,3 +8,6 @@ augroup pencil
         \ | call textobj#sentence#init()
   let g:lexical#spelllang = ['en_us','en_ca',]
 augroup END
+
+nnoremap <leader>tz :Goyo<CR>
+

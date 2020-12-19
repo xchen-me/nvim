@@ -1,3 +1,4 @@
+" signify version control changes
 " Change these if you want
 let g:signify_sign_add               = '+'
 let g:signify_sign_delete            = '_'
@@ -10,11 +11,10 @@ let g:signify_sign_show_text = 1
 
 
 " Jump though hunks
-nmap <leader>gj <plug>(signify-next-hunk)
-nmap <leader>gk <plug>(signify-prev-hunk)
-nmap <leader>gJ 9999<leader>gJ
-nmap <leader>gK 9999<leader>gk
-
+nmap <leader>g] <plug>(signify-next-hunk)
+nmap <leader>g[ <plug>(signify-prev-hunk)
+nmap <leader>g} 9999<leader>g]
+nmap <leader>g{ 9999<leader>g[
 
 " If you like colors instead
 " highlight SignifySignAdd                  ctermbg=green                guibg=#00ff00

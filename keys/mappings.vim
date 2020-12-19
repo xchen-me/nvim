@@ -1,43 +1,40 @@
-" " Better nav for omnicomplete
-" inoremap <expr> <c-j> ("\<C-n>")
-" inoremap <expr> <c-k> ("\<C-p>")
-
-" " insert lines without entering insert mode
-" nmap <S-Enter> O<Esc>
-" nmap <D-Enter> o<Esc>
-" nmap <Enter> o<Esc>
-nnoremap <Leader>o o<Esc>
-nnoremap <Leader>O O<Esc>
-
+" faster buffer closing
 nnoremap Q q
 nnoremap q :bd<CR>
 " nnoremap q :q<CR>
+
 " delete current buffer
-" nnoremap <Leader>bd :bd<CR>
+nnoremap <Leader>bD :bd<CR>
 nnoremap <Leader>bd :Bclose<CR>
+nnoremap <D-w> :Bclose<CR>
+inoremap <D-w> <Esc>:Bclose<CR>
 
 " Swap J with gJ. I mostly use gJ to join lines.
 nnoremap J gJ
 nnoremap gJ J
 nnoremap j gj
-" nnoremap k gk " already done in pencil
+" nnoremap k gk " already done in pencil plugin
 
 " paste the same text a second time
 xnoremap <silent> p p:let @"=@0<CR>
 
-" less stress on the right pinky fingure
-nnoremap ; :
+" less stress on the right pinky
+" nnoremap ; :
+nnoremap <leader>; :
+" alt x to : in insert mode
+inoremap ≈ <Esc>:
 
-" go back to previous file in one hand instead of ctrl + 6
-nnoremap <C-e> :e#<CR>
-
-" nmap <leader>ww :e ~/Dropbox/mwiki/index.Rmd<CR>
-
-" Use Cmd+Ctrl+ hjkl to resize windows
-nnoremap <D-M-j>    :resize -2<CR>
-nnoremap <D-M-k>    :resize +2<CR>
-nnoremap <D-M-h>    :vertical resize -2<CR>
-nnoremap <D-M-l>    :vertical resize +2<CR>
+" {{{
+" Use Cmd+Shift+ hjkl to resize windows
+nnoremap <D-M-S-j>    :resize -2<CR>
+nnoremap <D-M-S-k>    :resize +2<CR>
+nnoremap <D-M-S-h>    :vertical resize -2<CR>
+nnoremap <D-M-S-l>    :vertical resize +2<CR>
+inoremap <D-M-S-j>    <Esc>:resize -2<CR>
+inoremap <D-M-S-k>    <Esc>:resize +2<CR>
+inoremap <D-M-S-h>    <Esc>:vertical resize -2<CR>
+inoremap <D-M-S-l>    <Esc>:vertical resize +2<CR>
+" }}}
 
 " Easier escape
 inoremap jk <Esc>
@@ -47,6 +44,7 @@ cnoremap jk <C-c>
 " but not in visual mode: xnoremap jk will mess up j motion in visual mode
 
 " TAB in general mode will move to text buffer
+" same function as [b and ]b
 nnoremap <C-TAB> :bnext<CR>
 " SHIFT-TAB will go back
 nnoremap <C-S-TAB> :bprevious<CR>
@@ -54,16 +52,19 @@ nnoremap <C-S-TAB> :bprevious<CR>
 " Alternate way to save
 nnoremap <C-s> :w<CR>
 nnoremap <D-s> :w<CR>
+
+" new tab
 nnoremap <D-t> :tabnew<CR>
+nnoremap <leader>bN :tabnew<CR>
+
 " Alternate way to quit
 nnoremap <C-Q> :wq!<CR>
-" nnoremap <leader>qq :q<CR>
-" Use control-c instead of escape
-nnoremap <C-c> <Esc>
+nnoremap <leader>qq :q<CR>
+
 " <TAB>: completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
 
-" Better tabbing
+" Better tabbing to indent in visual mode
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 vnoremap < <gv
@@ -77,9 +78,7 @@ noremap X "_x
 noremap c "_c
 noremap C "_C
 
-" shift j and shift k to move selected lines up and down
-" vnoremap J :m '>+1<CR>gv=gv
-" vnoremap K :m '<-2<CR>gv=gv
+" move selected lines up and down
 nmap <C-S-Up> [e
 nmap <C-S-Down> ]e
 vmap <C-S-Up> [egv
@@ -91,27 +90,38 @@ vmap ∆ ]egv
 vmap ˚ [egv
 
 " Move across wrapped lines like regular lines
-"Go to the first non-blank character of a line
+" Go to the first non-blank character of a line
 noremap 0 ^
-"Just in case you need to go to the very beginning of a line
+" Just in case you need to go to the very beginning of a line
 noremap ^ 0
 nnoremap L $
 nnoremap H 0
+
 " more natural yank to the end
 nnoremap Y y$
 
 " Clear search highlights.
-nmap <Space>, :let @/=''<CR>
+nmap <Space>= :let @/=''<CR>
 
 " Keep cursor at the bottom of the visual selection after you yank it.
 vmap y ygv<Esc>
 
 " Better window navigation
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
-" a litter more smarter window navigation: c-h moves to the left window and
+" nnoremap <C-h> <C-w>h
+" nnoremap <C-j> <C-w>j
+" nnoremap <C-k> <C-w>k
+" nnoremap <C-l> <C-w>l
+nnoremap <leader>wh <C-w>h
+nnoremap <leader>wj <C-w>j
+nnoremap <leader>wk <C-w>k
+nnoremap <leader>wl <C-w>l
+nnoremap <leader>wv <C-w>v
+nnoremap <leader>ws <C-w>s
+nnoremap <leader>ww <C-w>w
+nnoremap <Leader>wo <C-w>o
+" close/delete window
+nnoremap <Leader>wd :close<CR>
+" smarter window navigation: c-h moves to the left window and
 " splits the window if no left window exists.
 " function! WinMove(key)
 "     let t:curwin = winnr()
@@ -119,7 +129,7 @@ nnoremap <C-l> <C-w>l
 "     if (t:curwin == winnr())
 "         if (match(a:key,'[jk]'))
 "             wincmd v
-"         else
+"  r      else
 "             wincmd s
 "         endif
 "         exec "wincmd ".a:key
@@ -159,43 +169,63 @@ nnoremap <silent> c* :let @/='\<'.expand('<cword>').'\>'<CR>cgn
 xnoremap <silent> c* "sy:let @/=@s<CR>cgn
 
 " better Emacs-style command line navigation
+" --------------
+" built in features:
+" ctrl w backward deletes a word
+" ctrl u backward deletes to the start of the line; 
+" inoremap <C-u> <Esc>d0xi
+" --------------
 cnoremap <C-a> <Home>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
+cnoremap <C-e> <End>
 cnoremap <C-d> <Delete>
 " Meta b
 cnoremap ∫ <S-Left>
 " Meta f
 cnoremap ƒ <S-Right>
 " Meta d 
-cnoremap ∂ <S-right><Delete>
-cnoremap <D-g> <C-g>
-" cnoremap <D-t> <C-t>
+cnoremap ∂ <S-Right><C-w>
+" Meta Backspace deletes backward a word
+cnoremap <M-BS> <C-w>
+" commandline paste
+"https://medium.com/usevim/vim-101-pasting-into-command-line-mode-db5946a1e8a7 
+cnoremap <C-y> <C-r>"
 
-"" ----------------------------------------------------------------------------
-" Markdown headings
-" ----------------------------------------------------------------------------
-nnoremap <leader>1 m`yypVr=``
-" mark current location with `, go to front of the line, insert headings, go
-" back to the original location 
-nnoremap <leader>2 m`^i## <esc>``3l
-" nnoremap <leader>2 m`yypVr-``
-nnoremap <leader>3 m`^i### <esc>``4l
-nnoremap <leader>4 m`^i#### <esc>``5l
-nnoremap <leader>5 m`^i##### <esc>``6l
-
-" Movement in insert mode
+"Movement in insert mode
+inoremap <C-a> <Home>
 inoremap <C-b> <Left>
-inoremap ∫ <S-Left>
 inoremap <C-f> <Right>
-inoremap <C-l> <Right>
+inoremap <C-e> <End>
+inoremap <C-d> <Delete>
+" alt/Meta b
+inoremap ∫ <S-Left>
+" alt/Meta f
 inoremap ƒ <S-Right>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <D-left> <C-o>^
-inoremap <D-right> <C-o>$
+" emacs style Alt-d to delete a word in forward direction
+inoremap ∂ <S-Right><C-w>
+inoremap <M-BS> <C-w>
+
+inoremap <M-left> <S-Left>
+inoremap <M-right> <S-Right>
+" alt h
+inoremap ˙ <S-Left>
+" alt l
+inoremap ¬ <S-Right>
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
+" emacs style ctrl k to delete to the end of the line
+inoremap <C-k> <Esc>lDa
+" emacs style alt k to delete to the end of the line
+inoremap ˚ <Esc>lDa
+" paste
+inoremap <C-y> <C-r>"
+
+inoremap <D-left> <Home>
+inoremap <D-right> <End>
 " inoremap <D-h> <C-o>^
-inoremap <D-l> <C-o>$
+" inoremap <D-l> <End>
+" shift is for selection
 inoremap <D-S-left> <C-o>v^
 inoremap <D-S-right> <C-o>v$
 inoremap <D-S-h> <C-o>v^
@@ -208,12 +238,6 @@ inoremap <S-D-up> <C-o>h<C-o>vgk<C-o>l
 inoremap <S-D-down> <C-o>vgj
 inoremap <S-left> <C-o>h<C-o>v
 inoremap <S-right> <C-o>vl
-inoremap <M-left> <C-o>b
-inoremap <M-right> <C-o>e
-" alt h
-inoremap ˙ <C-o>b
-" alt l
-inoremap ¬ <C-o>e
 " option + shift + h/l to visual select word
 inoremap Ó <C-o>h<C-o>vb
 inoremap Ò <C-o>ve
@@ -229,6 +253,8 @@ vmap <S-M-Up> k
 vmap <S-D-down> j
 vmap <S-D-up> k
 vmap <S-D-j> j
+vmap <M-l> e
+vmap <M-h> b
 vmap <S-D-k> k
 vmap <S-M-right> e
 vmap <S-M-left> b
@@ -241,6 +267,7 @@ vmap <S-h> ^
 " option shift h/l
 vmap Ó b
 vmap Ò w
+vmap <backspace> x
 
 " Mapping <Shift>-Arrows to selecting characters/lines
 " activate visual mode in normal mode
@@ -253,8 +280,8 @@ nmap <S-M-left> vh
 
 noremap <D-left> ^
 noremap <D-right> $
-noremap <D-h> ^
-noremap <D-l> $
+noremap <C-a> ^
+noremap <C-e> $
 noremap <D-S-left> v^
 noremap <D-S-right> v$
 noremap <D-S-h> v^
@@ -265,6 +292,33 @@ noremap <D-S-l> v$
 " inoremap <C-j> <C-o>j
 " inoremap <C-k> <C-o>k
 inoremap <C-^> <C-o><C-^>
-inoremap <C-e> <C-o><C-^>
+" inoremap <C-e> <C-o><C-^>
+inoremap <D-z> <C-o>u
+nnoremap <D-z> u
 
+" go back to previous file in one hand instead of ctrl + 6
+" nnoremap <leader>` :e#<CR>
 nnoremap <leader>` <C-^>
+
+"" ----------------------------------------------------------------------------
+" Markdown headings
+" ----------------------------------------------------------------------------
+nnoremap <leader>1 m`yypVr=``
+" mark current location with `, go to front of the line, insert headings, go
+" back to the original location 
+nnoremap <leader>2 m`^i## <esc>``3l
+" nnoremap <leader>2 m`yypVr-``
+nnoremap <leader>3 m`^i### <esc>``4l
+nnoremap <leader>4 m`^i#### <esc>``5l
+nnoremap <leader>5 m`^i##### <esc>``6l
+
+" more consistent increment with my emacs
+:nnoremap g= <C-a>
+:nnoremap g- <C-x>
+
+" " insert lines without entering insert mode
+" same as [ Space and ] Space in vim-unimpaired
+" depreciating soon
+" nnoremap <Leader>o o<Esc>
+" nnoremap <Leader>O O<Esc>
+

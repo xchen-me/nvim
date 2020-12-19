@@ -12,6 +12,7 @@ autocmd Filetype rmd,rmarkdown,Rmd,markdown set nofoldenable
 " useful for rjournal: writting journals in R
 " autocmd Filetype rmd,rmarkdown,Rmd nmap <leader>ll :w<CR>:AsyncRun -post=!zathura\ "%:r".pdf Rscript -e 'rmarkdown::render("%")'<CR>
 autocmd Filetype rmd,rmarkdown,Rmd nmap <leader>ll :w<CR>:AsyncRun -post=!open\ -a\ Skim.app\ "%:r".pdf Rscript -e 'rmarkdown::render("%")'<CR>
+autocmd Filetype rmd,rmarkdown,Rmd nmap ˜e :w<CR>:AsyncRun -post=!open\ -a\ Skim.app\ "%:r".pdf Rscript -e 'rmarkdown::render("%")'<CR>
 "
 " press <leader>lv to compile to pdf and open in Skim
 autocmd Filetype rmd,rmarkdown,Rmd nmap <leader>lv :w<CR>:AsyncRun -post=!open\ -a\ Skim.app\ "%:r".pdf Rscript -e 'rmarkdown::render("%", "pdf_document")'<CR>

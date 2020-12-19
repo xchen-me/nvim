@@ -5,7 +5,7 @@ augroup vimrc
   au BufWinEnter * if &fdm == 'indent' | setlocal foldmethod=manual | setlocal nofoldenable | endif
 augroup END
 
-autocmd Filetype rmarkdown,tex,org,text nmap <leader>p :!open -a Skim.app "%:r".pdf<CR>
+autocmd Filetype rmarkdown,tex,org,text nmap <leader>mv :!open -a Skim.app "%:r".pdf<CR>
 
 " vmap <silent> <Tab>	<Plug>(is-scroll-f)
 " vmap <silent> <S-Tab> <Plug>(is-scroll-b)

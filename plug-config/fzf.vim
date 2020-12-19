@@ -20,17 +20,43 @@ endif
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 " nmap <C-f> :Files<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>g :GFiles<CR>
-nnoremap <leader>t :Tags<CR>
-" nnoremap <leader>t :Tags<CR>
-nnoremap <leader>m :Marks<CR>
+" cd %:p:h<CR>:pwd<CR>
+nnoremap <D-p> :cd %:p:h<CR>:pwd<CR>:Files<CR>
+inoremap <D-p> <Esc>:cd %:p:h<CR>:pwd<CR>:Files<CR>
+nnoremap <leader><leader> :GFiles<CR>
+nnoremap <leader>. :cd %:p:h<CR>:pwd<CR>:Files<CR>
+nnoremap <leader>/ :Rg 
+nnoremap <leader>sd :cd %:p:h<CR>:pwd<CR>:Rg 
+nnoremap <leader>sb :BLines<CR>
+nnoremap <leader>ss :BLines<CR>
+nnoremap <leader>< :Buffers<CR>
+nnoremap <leader>sg :GFiles<CR>
+nnoremap <leader>st :Tags<CR>
+nnoremap <leader>sm :Marks<CR>
+nnoremap <leader>sp :Rg 
+nnoremap <leader>fr :History<CR>
+nnoremap <leader>hbb :Map<CR>
 
-nnoremap <D-p> :Files<CR>
-nnoremap <D-f> :CocSearch 
-nnoremap <D-S-f> :Rg<CR>
-" sublime text / vs code like command palette
+" Search spotlight {{{2
+command! -nargs=1 FzfSpotlight call fzf#run(fzf#wrap({
+            \ 'source'  : 'mdfind -onlyin ~ <q-args>',
+            \ 'options' : '-m --prompt "Spotlight> "'
+            \ }))
+" nnoremap <leader>sf :FzfSpotlight <C-R><C-W>
+nnoremap <leader>sf :FzfSpotlight 
+
 nnoremap <D-S-p> :Commands<CR>
+inoremap <D-S-p> <Esc>:Commands<CR>
+nnoremap <D-o> :Commands<CR>
+inoremap <D-o> <Esc>:Commands<CR>
+" nnoremap <C-S-p> :Commands<CR>
+
+nnoremap <D-f> :CocSearch 
+inoremap <D-f> <Esc>:CocSearch 
+" nnoremap <C-f> :CocSearch 
+nnoremap <D-S-f> :Rg 
+inoremap <D-S-f> <Esc>:Rg 
+" sublime text / vs code like command palette
 
 " [Buffers] Jump to the existing window if possible
 let g:fzf_buffers_jump = 1
