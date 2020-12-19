@@ -1,0 +1,27 @@
+* A modern-looking, multi-purpose neovim configuration
+
+- modular: add and configure plugins in separate files, then source them to a central init.vim file
+- multi-purpose: use it for writing in science and engineering with markdown, pandoc, and LaTeX, or for coding in python
+- one build, diverse realizations everywhere: enjoy consistent performance in the commandline, in a packaged GUI such as [[https://github.com/qvacua/vimr][vimR]], or in [[https://github.com/asvetliakov/vscode-neovim][VS Code]]!
+- modern-looking:
+  [[file:img/ranger.png][Browsing directories]]
+  [[file:img/split window.jpg][Split windows]]
+  [[file:img/split window 3.jpg][Multi-window editing]]
+
+* Setup
+
+- install [[https://neovim.io][neovim]]
+
+- clone this folder to a convenient location on your computer, e.g., ~/Downloads/nvim
+
+- backup your original nvim settings, e.g., in commandline with
+  #+begin_src shell
+  mv ~/.config/nvim ~/.config/nvim-bk
+  #+end_src
+
+- move this folder to your vim setting folder, e.g.,
+    #+begin_src shell
+    mv ~/Downloads/nvim ~/.config/nvim
+    #+end_src
+  
+- To sync setting on multiple computers, store the folder in a network drive and symbolically link the folder to your vim setting folder.

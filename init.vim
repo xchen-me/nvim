@@ -28,9 +28,3 @@ if !exists('g:vscode')
   source $HOME/.config/nvim/general/after.vim
   " lua require'plug-colorizer'
 endif
-" ===========================================
-" inactive plugins
-" ===========================================
-" source $HOME/.config/nvim/themes/gruvbox.vim
-" " fastfold makes pandoc rmarkdown files laggy
-" source $HOME/.config/nvim/plug-config/fastfold.vim
