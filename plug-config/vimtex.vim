@@ -1,7 +1,6 @@
 " let maplocalleader = "\<shift>"
 let g:tex_flavor='latex'
 let g:vimtex_view_method='skim'
-" let g:vimtex_view_method='zathura'
 let g:vimtex_indent_enabled=1
 " let g:vimtex_toc_enabled=1
 let g:vimtex_quickfix_mode=1

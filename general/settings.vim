@@ -1,4 +1,5 @@
-set nocompatible                        " makes Vim work without being Vi-compatible, all improvements/features available to the user.
+set nocompatible                " makes Vim work without being Vi-compatible, all improvements/features available to the user.
+
 " set SPACE as the leader key
 let g:mapleader = "\<Space>"
 

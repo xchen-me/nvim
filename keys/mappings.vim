@@ -1,26 +1,27 @@
 " faster buffer closing
 nnoremap Q q
 nnoremap q :bd<CR>
-" nnoremap q :q<CR>
 
-" delete current buffer
-nnoremap <Leader>bD :bd<CR>
+" buffer/window deletion
+nnoremap <Leader>bD :Bclose<CR>
 nnoremap <Leader>bd :Bclose<CR>
-nnoremap <D-w> :Bclose<CR>
-inoremap <D-w> <Esc>:Bclose<CR>
+nnoremap <D-w> :close<CR>
+inoremap <D-w> <Esc>:close<CR>
+nnoremap <Leader>wd :close<CR>
 
 " Swap J with gJ. I mostly use gJ to join lines.
 nnoremap J gJ
 nnoremap gJ J
 nnoremap j gj
-" nnoremap k gk " already done in pencil plugin
+" k is already mapped to gk in the pencil plugin
+" nnoremap k gk
 
 " paste the same text a second time
 xnoremap <silent> p p:let @"=@0<CR>
 
 " less stress on the right pinky
-" nnoremap ; :
 nnoremap <leader>; :
+" nnoremap ; :
 " alt x to : in insert mode
 inoremap ≈ <Esc>:
 
@@ -43,10 +44,9 @@ inoremap jk <Esc>
 cnoremap jk <C-c>
 " but not in visual mode: xnoremap jk will mess up j motion in visual mode
 
-" TAB in general mode will move to text buffer
+" tab movement
 " same function as [b and ]b
 nnoremap <C-TAB> :bnext<CR>
-" SHIFT-TAB will go back
 nnoremap <C-S-TAB> :bprevious<CR>
 
 " Alternate way to save
@@ -83,16 +83,15 @@ nmap <C-S-Up> [e
 nmap <C-S-Down> ]e
 vmap <C-S-Up> [egv
 vmap <C-S-Down> ]egv
+
 " Alt + j / k to move lines up and down 
 nmap ∆ ]e
 nmap ˚ [e
 vmap ∆ ]egv
 vmap ˚ [egv
 
-" Move across wrapped lines like regular lines
 " Go to the first non-blank character of a line
 noremap 0 ^
-" Just in case you need to go to the very beginning of a line
 noremap ^ 0
 nnoremap L $
 nnoremap H 0
@@ -119,38 +118,15 @@ nnoremap <leader>wv <C-w>v
 nnoremap <leader>ws <C-w>s
 nnoremap <leader>ww <C-w>w
 nnoremap <Leader>wo <C-w>o
-" close/delete window
-nnoremap <Leader>wd :close<CR>
-" smarter window navigation: c-h moves to the left window and
-" splits the window if no left window exists.
-" function! WinMove(key)
-"     let t:curwin = winnr()
-"     exec "wincmd ".a:key
-"     if (t:curwin == winnr())
-"         if (match(a:key,'[jk]'))
-"             wincmd v
-"  r      else
-"             wincmd s
-"         endif
-"         exec "wincmd ".a:key
-"     endif
-" endfunction
-" nnoremap <silent> <C-h> :call WinMove('h')<CR>
-" nnoremap <silent> <C-j> :call WinMove('j')<CR>
-" nnoremap <silent> <C-k> :call WinMove('k')<CR>
-" nnoremap <silent> <C-l> :call WinMove('l')<CR>
 
-" 'cd' towards the directory in which the current file is edited
-" but only change the path for the current window
-" nnoremap <leader>cd :lcd %:h<CR>
+" directory management {{{ 
 " change to the directory of the currently open file (this sets the current directory for all windows in Vim)
 " https://vim.fandom.com/wiki/Set_working_directory_to_the_current_file
 nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
-" nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
-" command CDD cd %:p:h " Change to Directory of Current file
-"https://vimways.org/2019/vim-and-the-working-directory/
+
 " Open files located in the same dir in with the current file is edited
 nnoremap \ew :e <C-R>=expand("%:.:h") . "/"<CR>
+" }}}
 
 " press * to search for the term under the cursor or a visual selection and
 " then press a key below to replace all instances of it in the current file
@@ -189,7 +165,7 @@ cnoremap ∂ <S-Right><C-w>
 " Meta Backspace deletes backward a word
 cnoremap <M-BS> <C-w>
 " commandline paste
-"https://medium.com/usevim/vim-101-pasting-into-command-line-mode-db5946a1e8a7 
+" https://medium.com/usevim/vim-101-pasting-into-command-line-mode-db5946a1e8a7 
 cnoremap <C-y> <C-r>"
 
 "Movement in insert mode
@@ -313,8 +289,8 @@ nnoremap <leader>4 m`^i#### <esc>``5l
 nnoremap <leader>5 m`^i##### <esc>``6l
 
 " more consistent increment with my emacs
-:nnoremap g= <C-a>
-:nnoremap g- <C-x>
+nnoremap g= <C-a>
+nnoremap g- <C-x>
 
 " " insert lines without entering insert mode
 " same as [ Space and ] Space in vim-unimpaired

@@ -1,4 +1,4 @@
-# A modern-looking, multi-purpose neovim configuration
+# A modern-looking, multi-purpose neovim configuration for academics on a Mac
 
 - modular: add and configure plugins in separate files, then source them to a central init.vim file
 
@@ -29,3 +29,10 @@
   ```
 - To sync setting on multiple computers, store the folder in a network
   drive and symbolically link the folder to your vim setting folder.
+
+# todo
+
+* feature explanations
+
+# References
+

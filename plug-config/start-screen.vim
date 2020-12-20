@@ -13,12 +13,5 @@ let g:startify_lists = [
       \ ]
 let g:startify_bookmarks = [
       \{'i': '~/Dropbox/Apps/nvim_repository/nvim/init.vim'}, 
-      \{'s': '~/Dropbox/+++++/mWeb_personal_website_academic-kickstart-master/content'}, 
-      \{'c': '~/Dropbox/+++++/mCV'},
-      \{'v': '~/Dropbox/Apps/nvim_repository/nvim'},
-      \{'p': '~/Dropbox/mPaper'},
-      \{'t': '~/Dropbox/ChenAcademicSummary_mAcademic'},
       \{'z': '~/.zshrc'},
       \{'n': '~/Dropbox/mNotes'} ]
-      " \{'v': '~/Dropbox/Apps/Vim\ nvim'},
-      " \{'w': '~/Dropbox/mwiki'},
