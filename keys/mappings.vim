@@ -1,13 +1,3 @@
-" faster buffer closing
-nnoremap Q q
-nnoremap q :bd<CR>
-
-" buffer/window deletion
-nnoremap <Leader>bD :Bclose<CR>
-nnoremap <Leader>bd :Bclose<CR>
-nnoremap <D-w> :close<CR>
-inoremap <D-w> <Esc>:close<CR>
-nnoremap <Leader>wd :close<CR>
 
 " Swap J with gJ. I mostly use gJ to join lines.
 nnoremap J gJ
@@ -25,44 +15,71 @@ nnoremap <leader>; :
 " alt x to : in insert mode
 inoremap ≈ <Esc>:
 
-" {{{
-" Use Cmd+Shift+ hjkl to resize windows
-nnoremap <D-M-S-j>    :resize -2<CR>
-nnoremap <D-M-S-k>    :resize +2<CR>
-nnoremap <D-M-S-h>    :vertical resize -2<CR>
-nnoremap <D-M-S-l>    :vertical resize +2<CR>
-inoremap <D-M-S-j>    <Esc>:resize -2<CR>
-inoremap <D-M-S-k>    <Esc>:resize +2<CR>
-inoremap <D-M-S-h>    <Esc>:vertical resize -2<CR>
-inoremap <D-M-S-l>    <Esc>:vertical resize +2<CR>
-" }}}
+if !exists('g:vscode')
+  " faster buffer closing
+  nnoremap Q q
+  nnoremap q :Bclose<CR>
+  " Alternate way to quit
+  nnoremap <C-Q> :wq!<CR>
 
-" Easier escape
-inoremap jk <Esc>
-" inoremap kj <Esc>
-" do it in command line too
-cnoremap jk <C-c>
-" but not in visual mode: xnoremap jk will mess up j motion in visual mode
+  " buffer/window deletion
+  nnoremap <Leader>bD :Bclose<CR>
+  nnoremap <Leader>bd :Bdelete<CR>
+  nnoremap <leader>qq :Bdelete<CR>
+  nnoremap <D-w> :Bdelete<CR>
+  inoremap <D-w> <Esc>:Bdelete<CR>
+  nnoremap <Leader>wd :close<CR>
 
-" tab movement
-" same function as [b and ]b
-nnoremap <C-TAB> :bnext<CR>
-nnoremap <C-S-TAB> :bprevious<CR>
+  " {{{
+  " Use Cmd+Shift+ hjkl to resize windows
+  nnoremap <D-M-S-j>    :resize -2<CR>
+  nnoremap <D-M-S-k>    :resize +2<CR>
+  nnoremap <D-M-S-h>    :vertical resize -2<CR>
+  nnoremap <D-M-S-l>    :vertical resize +2<CR>
+  inoremap <D-M-S-j>    <Esc>:resize -2<CR>
+  inoremap <D-M-S-k>    <Esc>:resize +2<CR>
+  inoremap <D-M-S-h>    <Esc>:vertical resize -2<CR>
+  inoremap <D-M-S-l>    <Esc>:vertical resize +2<CR>
+  " }}}
 
-" Alternate way to save
-nnoremap <C-s> :w<CR>
-nnoremap <D-s> :w<CR>
+  " Easier escape
+  inoremap jk <Esc>
+  " inoremap kj <Esc>
+  " do it in command line too
+  cnoremap jk <C-c>
+  " but not in visual mode: xnoremap jk will mess up j motion in visual mode
 
-" new tab
-nnoremap <D-t> :tabnew<CR>
-nnoremap <leader>bN :tabnew<CR>
+  " tab movement
+  " same function as [b and ]b
+  nnoremap <C-TAB> :bnext<CR>
+  nnoremap <C-S-TAB> :bprevious<CR>
 
-" Alternate way to quit
-nnoremap <C-Q> :wq!<CR>
-nnoremap <leader>qq :q<CR>
+  " Alternate way to save
+  nnoremap <C-s> :w<CR>
+  nnoremap <D-s> :w<CR>
 
-" <TAB>: completion.
-inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+  " new tab
+  nnoremap <D-t> :tabnew<CR>
+  nnoremap <leader>bN :tabnew<CR>
+
+  " <TAB>: completion.
+  inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+
+  " Better window navigation
+  " nnoremap <C-h> <C-w>h
+  " nnoremap <C-j> <C-w>j
+  " nnoremap <C-k> <C-w>k
+  " nnoremap <C-l> <C-w>l
+  nnoremap <leader>wh <C-w>h
+  nnoremap <leader>wj <C-w>j
+  nnoremap <leader>wk <C-w>k
+  nnoremap <leader>wl <C-w>l
+  nnoremap <leader>wv <C-w>v
+  nnoremap <leader>ws <C-w>s
+  nnoremap <leader>ww <C-w>w
+  nnoremap <leader>wr <C-w>r
+  nnoremap <Leader>wo <C-w>o
+endif
 
 " Better tabbing to indent in visual mode
 vnoremap <Tab> >gv
@@ -104,20 +121,6 @@ nmap <Space>= :let @/=''<CR>
 
 " Keep cursor at the bottom of the visual selection after you yank it.
 vmap y ygv<Esc>
-
-" Better window navigation
-" nnoremap <C-h> <C-w>h
-" nnoremap <C-j> <C-w>j
-" nnoremap <C-k> <C-w>k
-" nnoremap <C-l> <C-w>l
-nnoremap <leader>wh <C-w>h
-nnoremap <leader>wj <C-w>j
-nnoremap <leader>wk <C-w>k
-nnoremap <leader>wl <C-w>l
-nnoremap <leader>wv <C-w>v
-nnoremap <leader>ws <C-w>s
-nnoremap <leader>ww <C-w>w
-nnoremap <Leader>wo <C-w>o
 
 " directory management {{{ 
 " change to the directory of the currently open file (this sets the current directory for all windows in Vim)

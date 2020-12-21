@@ -7,7 +7,9 @@ let g:EasyMotion_smartcase = 1  " Turn on case-insensitive feature
 nmap gsl <Plug>(easymotion-bd-jk)
 nmap gsj <Plug>(easymotion-sol-j)
 nmap gsk <Plug>(easymotion-sol-k)
-nmap gsL <Plug>(easymotion-overwin-line)
+if !exists('g:vscode')
+  nmap gsL <Plug>(easymotion-overwin-line)
+endif
 nmap gsw <Plug>(easymotion-w)
 nmap gsb <Plug>(easymotion-b)
 

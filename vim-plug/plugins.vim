@@ -9,21 +9,25 @@ endif
 call plug#begin('~/.config/nvim/autoload/plugged')
 
   " Plug 'honza/vim-snippets'
-  Plug 'easymotion/vim-easymotion'
   Plug 'justinmk/vim-sneak'
   Plug 'haya14busa/is.vim'            " incremental search improved
   Plug 'tpope/vim-surround'
-  Plug 'mbbill/undotree'
+  Plug 'unblevable/quick-scope'
+  Plug 'mbbill/undotree'              " get to any word on a line in 2 or 3 keystrokes
   Plug 'wellle/targets.vim'           " better di, ci, etc for text objects
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-repeat'
   Plug 'rbgrouleff/bclose.vim'
   Plug 'tpope/vim-commentary'
 
-  if !exists('g:vscode')
+  if exists('g:vscode')
+    Plug 'ChristianChiarulli/vscode-easymotion'
+    Plug 'machakann/vim-highlightedyank'
+  else
     " better coding
     " Plug 'deoplete-plugins/deoplete-jedi' " python 
     Plug 'sheerun/vim-polyglot'       " Better Syntax Support
+    Plug 'easymotion/vim-easymotion'
 
     " color themes and startups
     Plug 'junegunn/rainbow_parentheses.vim'
@@ -43,13 +47,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " better editing
     Plug 'jiangmiao/auto-pairs'       " Auto pairs for '(' '[' '{'
+    Plug 'psliwka/vim-smoothie'       " Smooth scroll
     Plug 'mhinz/vim-signify'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-rhubarb'          " fugitive.vim is the Git, rhubarb.vim is the Hub
     Plug 'junegunn/gv.vim'            " git commit browser
-    Plug 'unblevable/quick-scope'
     Plug 'voldikss/vim-floaterm'
     Plug 'francoiscabrol/ranger.vim'
+    Plug 'moll/vim-bbye'              " Intuitive buffer closing
 
     " common file support
     Plug 'plasticboy/vim-markdown'
