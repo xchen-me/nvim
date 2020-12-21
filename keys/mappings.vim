@@ -1,4 +1,3 @@
-
 " Swap J with gJ. I mostly use gJ to join lines.
 nnoremap J gJ
 nnoremap gJ J
@@ -21,25 +20,44 @@ if !exists('g:vscode')
   nnoremap q :Bclose<CR>
   " Alternate way to quit
   nnoremap <C-Q> :wq!<CR>
-
-  " buffer/window deletion
-  nnoremap <Leader>bD :Bclose<CR>
-  nnoremap <Leader>bd :Bdelete<CR>
-  nnoremap <leader>qq :Bdelete<CR>
-  nnoremap <D-w> :Bdelete<CR>
-  inoremap <D-w> <Esc>:Bdelete<CR>
-  nnoremap <Leader>wd :close<CR>
+  nnoremap <leader>qq ZZ
 
   " {{{
-  " Use Cmd+Shift+ hjkl to resize windows
-  nnoremap <D-M-S-j>    :resize -2<CR>
-  nnoremap <D-M-S-k>    :resize +2<CR>
-  nnoremap <D-M-S-h>    :vertical resize -2<CR>
-  nnoremap <D-M-S-l>    :vertical resize +2<CR>
-  inoremap <D-M-S-j>    <Esc>:resize -2<CR>
-  inoremap <D-M-S-k>    <Esc>:resize +2<CR>
-  inoremap <D-M-S-h>    <Esc>:vertical resize -2<CR>
-  inoremap <D-M-S-l>    <Esc>:vertical resize +2<CR>
+  " buffer
+  nnoremap <Leader>bD :Bclose<CR>
+  nnoremap <Leader>bd :Bdelete<CR>
+  nnoremap <Leader>bk :Bdelete<CR>
+  nnoremap <D-w> :Bdelete<CR>
+  inoremap <D-w> <Esc>:Bdelete<CR>
+  nnoremap <Leader>bn ]b<CR>
+  nnoremap <Leader>bp [b<CR>
+  nnoremap <Leader>bN :enew<CR>
+  " }}}
+
+  " {{{
+  " Window 
+  " navigation
+  nnoremap <Leader>wd :close<CR>
+  nnoremap <leader>wh <C-w>h
+  nnoremap <leader>wj <C-w>j
+  nnoremap <leader>wk <C-w>k
+  nnoremap <leader>wl <C-w>l
+  nnoremap <leader>wv <C-w>v
+  nnoremap <leader>ws <C-w>s
+  nnoremap <leader>ww <C-w>w
+  nnoremap <leader>wr <C-w>r
+  nnoremap <Leader>wo <C-w>o
+  nnoremap <Leader>w= <C-w>=
+
+  " Use Cmd+alt+Shift+ hjkl to resize windows
+  nnoremap <D-M-S-j> :resize -2<CR>
+  nnoremap <D-M-S-k> :resize +2<CR>
+  nnoremap <D-M-S-h> :vertical resize -2<CR>
+  nnoremap <D-M-S-l> :vertical resize +2<CR>
+  inoremap <D-M-S-j> <Esc>:resize -2<CR>
+  inoremap <D-M-S-k> <Esc>:resize +2<CR>
+  inoremap <D-M-S-h> <Esc>:vertical resize -2<CR>
+  inoremap <D-M-S-l> <Esc>:vertical resize +2<CR>
   " }}}
 
   " Easier escape
@@ -64,21 +82,6 @@ if !exists('g:vscode')
 
   " <TAB>: completion.
   inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-
-  " Better window navigation
-  " nnoremap <C-h> <C-w>h
-  " nnoremap <C-j> <C-w>j
-  " nnoremap <C-k> <C-w>k
-  " nnoremap <C-l> <C-w>l
-  nnoremap <leader>wh <C-w>h
-  nnoremap <leader>wj <C-w>j
-  nnoremap <leader>wk <C-w>k
-  nnoremap <leader>wl <C-w>l
-  nnoremap <leader>wv <C-w>v
-  nnoremap <leader>ws <C-w>s
-  nnoremap <leader>ww <C-w>w
-  nnoremap <leader>wr <C-w>r
-  nnoremap <Leader>wo <C-w>o
 endif
 
 " Better tabbing to indent in visual mode

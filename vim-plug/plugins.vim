@@ -17,8 +17,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
   Plug 'wellle/targets.vim'           " better di, ci, etc for text objects
   Plug 'tpope/vim-unimpaired'
   Plug 'tpope/vim-repeat'
-  Plug 'rbgrouleff/bclose.vim'
-  Plug 'tpope/vim-commentary'
 
   if exists('g:vscode')
     Plug 'ChristianChiarulli/vscode-easymotion'
@@ -28,6 +26,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'deoplete-plugins/deoplete-jedi' " python 
     Plug 'sheerun/vim-polyglot'       " Better Syntax Support
     Plug 'easymotion/vim-easymotion'
+
+    Plug 'tpope/vim-commentary'
+    Plug 'rbgrouleff/bclose.vim'
 
     " color themes and startups
     Plug 'junegunn/rainbow_parentheses.vim'
