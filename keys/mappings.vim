@@ -22,6 +22,12 @@ if !exists('g:vscode')
   nnoremap <C-Q> :wq!<CR>
   nnoremap <leader>qq ZZ
 
+  " Vim has long-felt issues with remapping the CR key
+  " nnoremap <D-CR> ]<Space>
+  " nnoremap <D-S-CR> [<Space>
+  " inoremap <D-CR> <Esc>]<Space>i
+  " inoremap <D-S-CR> <Esc>[<Space>i
+
   " {{{
   " buffer
   nnoremap <Leader>bD :Bclose<CR>

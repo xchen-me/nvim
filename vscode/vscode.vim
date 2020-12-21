@@ -167,6 +167,7 @@ nnoremap <silent> <leader>bN :call VSCodeNotify('workbench.action.newUntitledFil
 nnoremap <silent> <leader>bu :call VSCodeNotify('workbench.action.reopenClosedEditor')<CR>
 
 nnoremap <silent> <leader>e :call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
+nnoremap <silent> <leader>gf :call VSCodeNotify('seito-openfile.openFileFromText')<CR>
 
 nnoremap <silent> <leader>ff :call VSCodeNotify('workbench.action.quickOpen')<CR>
 nnoremap <silent> <leader>fd :call VSCodeNotify('file-browser.open')<CR>

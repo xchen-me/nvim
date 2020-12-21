@@ -1,4 +1,4 @@
-# A modern-looking, multi-purpose neovim configuration for academics on a Mac
+# A modern, multi-purpose neovim configuration for academics on a Mac
 
 - modular: add and configure plugins in separate files, then source them to a central init.vim file
 
@@ -17,6 +17,11 @@
 # Setup
 
 - install [neovim](https://neovim.io)
+- install related apps:
+  + [fzf](https://github.com/junegunn/fzf): fuzzy finder
+  + [coc](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim): language server and text editing support
+  + [ranger](https://github.com/ranger/ranger): vim-like file management and navigation
+  + a LaTeX distribution such as [MacTeX](https://www.tug.org/mactex/) and [TinyTeX](https://yihui.name/tinytex/)
 - clone this folder to a convenient location on your computer, e.g.,
   \~/Downloads/nvim
 - backup your original nvim settings, e.g., in commandline with
@@ -32,8 +37,8 @@
 
 # todo
 
-* feature explanations
+- feature explanations
 
 # References
 
-* [NVCode](https://github.com/ChristianChiarulli/nvim)
+- [NVCode](https://github.com/ChristianChiarulli/nvim): motivated the modularized setup, a few of the initial settings, and the use of the onedark theme.
