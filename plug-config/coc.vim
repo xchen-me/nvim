@@ -67,6 +67,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi <Plug>(coc-implementation)
 " nmap <silent> gr <Plug>(coc-references)
 nmap <silent> gH <Plug>(coc-references)
+nmap <silent> gD <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -159,3 +160,7 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nmap <space>e :CocCommand explorer<CR>
 nmap <space>f :CocCommand explorer --preset floating<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+
+nnoremap <space>ss :CocSearch 
+nnoremap <space>sp :CocSearch 
+

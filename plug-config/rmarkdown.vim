@@ -13,6 +13,7 @@ autocmd Filetype rmd,rmarkdown,Rmd,markdown set nofoldenable
 " autocmd Filetype rmd,rmarkdown,Rmd nmap <leader>ll :w<CR>:AsyncRun -post=!zathura\ "%:r".pdf Rscript -e 'rmarkdown::render("%")'<CR>
 autocmd Filetype rmd,rmarkdown,Rmd nmap <leader>ll :w<CR>:AsyncRun -post=!open\ -a\ Skim.app\ "%:r".pdf Rscript -e 'rmarkdown::render("%")'<CR>
 autocmd Filetype rmd,rmarkdown,Rmd nmap ˜e :w<CR>:AsyncRun -post=!open\ -a\ Skim.app\ "%:r".pdf Rscript -e 'rmarkdown::render("%")'<CR>
+autocmd Filetype rmd,rmarkdown,Rmd nmap <C-c><C-b> :w<CR>:AsyncRun -post=!open\ -a\ Skim.app\ "%:r".pdf Rscript -e 'rmarkdown::render("%")'<CR>
 "
 " press <leader>lv to compile to pdf and open in Skim
 autocmd Filetype rmd,rmarkdown,Rmd nmap <leader>lv :w<CR>:AsyncRun -post=!open\ -a\ Skim.app\ "%:r".pdf Rscript -e 'rmarkdown::render("%", "pdf_document")'<CR>
@@ -30,3 +31,6 @@ autocmd Filetype rmd,rmarkdown,Rmd nmap <leader>lb :w<CR>:AsyncRun -post=!open\ 
 autocmd Filetype rmd,rmarkdown,Rmd nmap <leader>lc :w<CR>:AsyncRun Rscript -e 'library(rmarkdown);render("%","")'<left><left><left>
 
 autocmd FileType rmd,rmarkdown,Rmd setlocal commentstring=<!--\ %s\ -->
+
+autocmd Filetype rmarkdown,tex,org,text nmap <leader>mv :!open -a Skim.app "%:r".pdf<CR>
+

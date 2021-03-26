@@ -17,8 +17,10 @@
 # Setup
 
 - install [neovim](https://neovim.io)
-- install related apps:
+- install related apps (some functions will be unavailable in absence of these accessories):
   + [fzf](https://github.com/junegunn/fzf): fuzzy finder
+  + [ripgrep](https://github.com/BurntSushi/ripgrep): search enhanced
+  + [fd](https://github.com/sharkdp/fd): faster find
   + [coc](https://github.com/neoclide/coc.nvim/wiki/Install-coc.nvim): language server and text editing support
   + [ranger](https://github.com/ranger/ranger): vim-like file management and navigation
   + a LaTeX distribution such as [MacTeX](https://www.tug.org/mactex/) and [TinyTeX](https://yihui.name/tinytex/)

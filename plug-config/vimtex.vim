@@ -7,6 +7,7 @@ let g:vimtex_quickfix_mode=1
 let g:vimtex_fold_enabled=1
 let g:vimtex_fold_manual=0
 let g:vimtex_log_ignore = ['Underfull', 'Overfull']
+let g:vimtex_compiler_progname = 'nvr'
 " let g:vimtex_compiler_progname = '~/Library/Python/3.7/bin/nvr'
 " let g:vimtex_compiler_progname = '~/Library/Python/3.7/bin/nvr'
 autocmd Filetype tex,latex set nofoldenable

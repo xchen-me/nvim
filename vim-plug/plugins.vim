@@ -10,40 +10,75 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
   " Plug 'honza/vim-snippets'
   Plug 'justinmk/vim-sneak'
-  Plug 'haya14busa/is.vim'            " incremental search improved
-  Plug 'tpope/vim-surround'
   Plug 'unblevable/quick-scope'
-  Plug 'mbbill/undotree'              " get to any word on a line in 2 or 3 keystrokes
-  Plug 'wellle/targets.vim'           " better di, ci, etc for text objects
   Plug 'tpope/vim-unimpaired'
+  Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
 
   if exists('g:vscode')
     Plug 'ChristianChiarulli/vscode-easymotion'
     Plug 'machakann/vim-highlightedyank'
   else
+    Plug 'wellle/targets.vim'           " better di, ci, etc for text objects
+    Plug 'haya14busa/is.vim'            " incremental search improved
+    Plug 'mbbill/undotree'              " get to any word on a line in 2 or 3 keystrokes
     " better coding
     " Plug 'deoplete-plugins/deoplete-jedi' " python 
-    Plug 'sheerun/vim-polyglot'       " Better Syntax Support
+    " Plug 'lambdalisue/jupyter-vim-binding'
     Plug 'easymotion/vim-easymotion'
 
     Plug 'tpope/vim-commentary'
     Plug 'rbgrouleff/bclose.vim'
+    Plug 'HustLion/q-quit'
 
     " color themes and startups
     Plug 'junegunn/rainbow_parentheses.vim'
     Plug 'joshdick/onedark.vim'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    if has('nvim')
+      Plug 'christianchiarulli/nvcode-color-schemes.vim'
+      " Better tabline
+      Plug 'romgrk/barbar.nvim'
+      " Status Line
+      Plug 'glepnir/galaxyline.nvim'
+      Plug 'kyazdani42/nvim-web-devicons' " lua
+      Plug 'ryanoasis/vim-devicons' " vimscript
+    else
+      Plug 'vim-airline/vim-airline'
+      Plug 'vim-airline/vim-airline-themes'
+    endif
     " Plug 'norcalli/nvim-colorizer.lua'
     Plug 'mhinz/vim-startify'
     Plug 'liuchengxu/vim-which-key'
 
-    " better search 
-    Plug 'neoclide/coc.nvim', {'branch': 'release'} 
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    Plug 'alok/notational-fzf-vim'    " https://github.com/alok/notational-fzf-vim
+    " lsp and autocomplete
+    if has('nvim')
+      Plug 'neovim/nvim-lspconfig'
+      Plug 'hrsh7th/nvim-compe'
+      Plug 'glepnir/lspsaga.nvim'
+      " Plug 'onsails/lspkind-nvim'
+    else
+      Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+    endif
+    " better search
+    if has('nvim')
+      " telescope
+      Plug 'nvim-lua/popup.nvim'
+      Plug 'nvim-lua/plenary.nvim'
+      Plug 'nvim-telescope/telescope.nvim'
+      " Plug 'nvim-telescope/telescope-media-files.nvim' "works for linux
+      Plug 'kyazdani42/nvim-tree.lua'
+
+      " syntax highlighting; need to TSInstall {language} afterwards, e.g.,
+      " TSInstall {python, julia, html, lua}
+      Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+    else
+      Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+      Plug 'junegunn/fzf.vim'
+      Plug 'alok/notational-fzf-vim'    " https://github.com/alok/notational-fzf-vim
+
+      " Better Syntax Support
+      Plug 'sheerun/vim-polyglot'
+    endif
     Plug 'airblade/vim-rooter'
 
     " better editing
@@ -57,13 +92,14 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'francoiscabrol/ranger.vim'
     Plug 'moll/vim-bbye'              " Intuitive buffer closing
 
-    " common file support
+    " common file and language support
     Plug 'plasticboy/vim-markdown'
     Plug 'vim-pandoc/vim-pandoc'
     Plug 'vim-pandoc/vim-pandoc-syntax'
     Plug 'vim-pandoc/vim-rmarkdown'
     Plug 'lervag/vimtex'
     Plug 'axvr/org.vim'               " better syntax highlighting for org files
+    Plug 'JuliaEditorSupport/julia-vim'
 
     " better compile
     Plug 'skywind3000/asyncrun.vim'
@@ -92,5 +128,16 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     " Plug 'vim-scripts/utl.vim'
     " Plug 'vimoutliner/vimoutliner'
     " Plug 'dhruvasagar/vim-dotoo'
+    " Plug 'jalvesaq/Nvim-R', {'branch': 'stable'}
 endif
 call plug#end()
+
+" Automatically install missing plugins on startup
+autocmd VimEnter *
+  \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \|   PlugInstall --sync | q
+  \| endif
+
+
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy', 'all']
+

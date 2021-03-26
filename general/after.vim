@@ -13,4 +13,4 @@ autocmd Filetype rmarkdown,tex,org,text nmap <leader>mv :!open -a Skim.app "%:r"
 " vmap <wildcharm>	<C-g>
 " vmap <S-wildcharm> <C-t>
 
-cd ~/Dropbox
+" cd ~/Dropbox

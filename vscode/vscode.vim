@@ -18,13 +18,13 @@ function! s:closeOtherEditors()
     call VSCodeNotify('workbench.action.closeOtherEditors')
 endfunction
 
-function! s:manageEditorSize(...)
-    let count = a:1
-    let to = a:2
-    for i in range(1, count ? count : 1)
-        call VSCodeNotify(to == 'increase' ? 'workbench.action.increaseViewSize' : 'workbench.action.decreaseViewSize')
-    endfor
-endfunction
+" function! s:manageEditorSize(...)
+"     let count = a:1
+"     let to = a:2
+"     for i in range(1, count ? count : 1)
+"         call VSCodeNotify(to == 'increase' ? 'workbench.action.increaseViewSize' : 'workbench.action.decreaseViewSize')
+"     endfor
+" endfunction
 
 function! s:vscodeCommentary(...) abort
     if !a:0
@@ -39,34 +39,37 @@ function! s:vscodeCommentary(...) abort
     call VSCodeCallRange("editor.action.commentLine", line1, line2, 0)
 endfunction
 
-function! s:openVSCodeCommandsInVisualMode()
-    normal! gv
-    let visualmode = visualmode()
-    if visualmode == "V"
-        let startLine = line("v")
-        let endLine = line(".")
-        call VSCodeNotifyRange("workbench.action.showCommands", startLine, endLine, 1)
-    else
-        let startPos = getpos("v")
-        let endPos = getpos(".")
-        call VSCodeNotifyRangePos("workbench.action.showCommands", startPos[1], endPos[1], startPos[2], endPos[2], 1)
-    endif
-endfunction
+" function! s:openVSCodeCommandsInVisualMode()
+"     normal! gv
+"     let visualmode = visualmode()
+"     if visualmode == "V"
+"         let startLine = line("v")
+"         let endLine = line(".")
+"         call VSCodeNotifyRange("workbench.action.showCommands", startLine, endLine, 1)
+"     else
+"         let startPos = getpos("v")
+"         let endPos = getpos(".")
+"         call VSCodeNotifyRangePos("workbench.action.showCommands", startPos[1], endPos[1], startPos[2], endPos[2], 1)
+"     endif
+" endfunction
 
-function! s:openWhichKeyInVisualMode()
-    normal! gv
-    let visualmode = visualmode()
-    if visualmode == "V"
-        let startLine = line("v")
-        let endLine = line(".")
-        call VSCodeNotifyRange("whichkey.show", startLine, endLine, 1)
-    else
-        let startPos = getpos("v")
-        let endPos = getpos(".")
-        call VSCodeNotifyRangePos("whichkey.show", startPos[1], endPos[1], startPos[2], endPos[2], 1)
-    endif
-endfunction
+" function! s:openWhichKeyInVisualMode()
+"     normal! gv
+"     let visualmode = visualmode()
+"     if visualmode == "V"
+"         let startLine = line("v")
+"         let endLine = line(".")
+"         call VSCodeNotifyRange("whichkey.show", startLine, endLine, 1)
+"     else
+"         let startPos = getpos("v")
+"         let endPos = getpos(".")
+"         call VSCodeNotifyRangePos("whichkey.show", startPos[1], endPos[1], startPos[2], endPos[2], 1)
+"     endif
+" endfunction
 
+" I and A have issues currently in the setup. Have to manually map them.
+nnoremap <silent> I :call VSCodeNotify('cursorHome')<CR>i
+nnoremap <silent> A :call VSCodeNotify('cursorEnd')<CR>a
 
 command! -complete=file -nargs=? Split call <SID>split('h', <q-args>)
 command! -complete=file -nargs=? Vsplit call <SID>split('v', <q-args>)
@@ -124,6 +127,8 @@ nnoremap <silent> <leader>ws :call VSCodeNotify('workbench.action.splitEditorDow
 xnoremap <silent> <leader>ws :call VSCodeNotify('workbench.action.splitEditorDown')<CR>
 nnoremap <silent> <leader>ww :call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
 xnoremap <silent> <leader>ww :call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
+" nnoremap <silent> <C-x>o :call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
+" xnoremap <silent> <C-x>o :call VSCodeNotify('workbench.action.focusPreviousGroup')<CR>
 nnoremap <silent> <leader>wmm :call VSCodeNotify('workbench.action.minimizeOtherEditors')<CR>
 xnoremap <silent> <leader>wmm :call VSCodeNotify('workbench.action.minimizeOtherEditors')<CR>
 
@@ -154,6 +159,13 @@ nmap gc  <Plug>VSCodeCommentary
 omap gc  <Plug>VSCodeCommentary
 nmap gcc <Plug>VSCodeCommentaryLine
 
+nnoremap <silent> zc :call VSCodeNotify('editor.fold')<CR>
+nnoremap <silent> zM :call VSCodeNotify('editor.foldAll')<CR>
+nnoremap <silent> zm :call VSCodeNotify('editor.foldRecursively')<CR>
+nnoremap <silent> zo :call VSCodeNotify('editor.unfold')<CR>
+nnoremap <silent> zR :call VSCodeNotify('editor.unfoldAll')<CR>
+nnoremap <silent> zr :call VSCodeNotify('editor.unfoldRecursively')<CR>
+
   " buffer/window deletion
 nnoremap <silent> <leader>bb :call VSCodeNotify('workbench.action.showAllEditors')<CR>
 nnoremap <silent> <leader>bd :call VSCodeNotify('workbench.action.closeActiveEditor')<CR>
@@ -166,8 +178,10 @@ nnoremap <silent> <leader>b[ :call VSCodeNotify('workbench.action.previousEditor
 nnoremap <silent> <leader>bN :call VSCodeNotify('workbench.action.newUntitledFile')<CR>
 nnoremap <silent> <leader>bu :call VSCodeNotify('workbench.action.reopenClosedEditor')<CR>
 
-nnoremap <silent> <leader>e :call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
-nnoremap <silent> <leader>gf :call VSCodeNotify('seito-openfile.openFileFromText')<CR>
+" nnoremap <silent> <leader>e :call VSCodeNotify('workbench.action.toggleSidebarVisibility')<CR>
+nnoremap <silent> <leader>e :call VSCodeNotify('workbench.files.action.showActiveFileInExplorer')<CR>
+nnoremap <silent> gf :call VSCodeNotify('seito-openfile.openFileFromText')<CR>
+nnoremap <silent> <leader>gf :call VSCodeNotify('editor.action.revealDefinitionAside')<CR>
 
 nnoremap <silent> <leader>ff :call VSCodeNotify('workbench.action.quickOpen')<CR>
 nnoremap <silent> <leader>fd :call VSCodeNotify('file-browser.open')<CR>
@@ -201,3 +215,5 @@ nnoremap <silent> <leader>tz :call VSCodeNotify('workbench.action.toggleZenMode'
 
 nnoremap <silent> <leader>yd :call VSCodeNotify('extension.downloadSettings')<CR>
 nnoremap <silent> <leader>yu :call VSCodeNotify('extension.updateSettings')<CR>
+
+
