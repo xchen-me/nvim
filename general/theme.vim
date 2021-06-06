@@ -14,6 +14,7 @@ if (has("termguicolors"))
     hi LineNr ctermbg=NONE guibg=NONE
 endif
 
+" set guifont=HackRegularNerdFontCompeteMono:h15
 " " Change this when you know where i3 will be
 " aug i3config_ft_detection
 "   au!

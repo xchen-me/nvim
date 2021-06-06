@@ -80,6 +80,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
       Plug 'sheerun/vim-polyglot'
     endif
     Plug 'airblade/vim-rooter'
+    Plug 'chrisbra/csv.vim'
 
     " better editing
     Plug 'jiangmiao/auto-pairs'       " Auto pairs for '(' '[' '{'

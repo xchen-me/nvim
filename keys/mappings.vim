@@ -290,9 +290,8 @@ noremap <D-S-l> v$
 "
 " switching between recent buffers in insert mode
 if !exists('g:vscode')
-  inoremap <C-l> <C-o>a
-  " inoremap <C-j> <C-o>j
-  " inoremap <C-k> <C-o>k
+  " Scroll the window so that current line is in the middle of the window.
+  inoremap <C-l> <C-o>M
   inoremap <C-^> <C-o><C-^>
   " inoremap <C-e> <C-o><C-^>
   inoremap <D-z> <C-o>u
