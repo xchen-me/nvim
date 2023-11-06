@@ -179,6 +179,7 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <C-e> <End>
 cnoremap <C-d> <Delete>
+nnoremap <C-k> d$
 " Meta b
 cnoremap ∫ <S-Left>
 " Meta f
@@ -198,6 +199,7 @@ if !exists('g:vscode')
   inoremap <C-f> <Right>
   inoremap <C-e> <End>
   inoremap <C-d> <Delete>
+  inoremap <C-k> <Esc>ld$a
   " alt/Meta b
   inoremap ∫ <S-Left>
   " alt/Meta f
