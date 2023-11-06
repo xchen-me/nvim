@@ -34,12 +34,6 @@
   ```{.shell}
   mv ~/Downloads/nvim ~/.config/nvim
   ```
-- To sync setting on multiple computers, store the folder in a network
-  drive and symbolically link the folder to your vim setting folder.
-
-# todo
-
-- feature explanations
 
 # References
 

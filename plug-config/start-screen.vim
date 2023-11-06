@@ -13,6 +13,5 @@ let g:startify_lists = [
       \ ]
 let g:startify_bookmarks = [
       \{'i': '~/.config/nvim/init.vim'}, 
-      \{'x': '~/Dropbox/Apps/nvim_repository/nvim/init.vim'}, 
-      \{'z': '~/.zshrc'},
-      \{'n': '~/Dropbox/mNotes'} ]
+      \{'z': '~/.zshrc'}
+      \ ]

@@ -3,8 +3,7 @@ set nocompatible                " makes Vim work without being Vi-compatible, al
 " set SPACE as the leader key
 let g:mapleader = "\<Space>"
 
-" let g:python3_host_prog = '/usr/local/bin/python3'
-let g:python3_host_prog = '/Users/xuchen/opt/anaconda3/bin/python3'
+let g:python3_host_prog = '/usr/local/bin/python3'
 " let g:python3_host_prog = '/Library/Frameworks/Python.framework/Versions/3.7/bin/python3'
 " let g:python3_host_prog = '$HOME/Library/Python/3.7/bin/'
 " let g:python3_host_prog = '$HOME/Library/Python/3.9/bin/'
