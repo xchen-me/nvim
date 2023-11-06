@@ -76,6 +76,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
       " TSInstall {python, julia, html, lua}
       " Plug 'nvim-treesitter/nvim-treesitter'
       Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+      Plug 'nvim-orgmode/orgmode'
     else
       Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
       Plug 'junegunn/fzf.vim'
@@ -104,7 +105,6 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vim-pandoc/vim-pandoc-syntax'
     Plug 'vim-pandoc/vim-rmarkdown'
     " Plug 'axvr/org.vim'               " better syntax highlighting for org files
-    Plug 'nvim-orgmode/orgmode'
     Plug 'JuliaEditorSupport/julia-vim'
 
     " better compile
