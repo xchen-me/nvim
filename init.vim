@@ -31,7 +31,7 @@ if !exists('g:vscode')
     luafile ~/.config/nvim/lua/plugins/mason.lua
     luafile ~/.config/nvim/lua/plugins/plug-orgmode.lua
     luafile ~/.config/nvim/lua/built-in-lsp.lua
-    source ~/.config/nvim/plug-config/lsp-saga.vim
+    luafile ~/.config/nvim/lua/plugins/lsp-saga.lua
     source ~/.config/nvim/plug-config/lsp-config.vim
     " if 0
     "   source ~/.config/nvim/plug-config/completion-nvim.vim
