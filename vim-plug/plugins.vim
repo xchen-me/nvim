@@ -55,6 +55,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
 
     " lsp and autocomplete
     if has('nvim')
+      Plug 'williamboman/mason.nvim'
       Plug 'neovim/nvim-lspconfig'
       Plug 'hrsh7th/nvim-compe'
       Plug 'glepnir/lspsaga.nvim'

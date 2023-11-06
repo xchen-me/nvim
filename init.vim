@@ -28,6 +28,8 @@ if !exists('g:vscode')
   endif
 
   if has('nvim')
+    luafile ~/.config/nvim/lua/plugins/mason.lua
+    luafile ~/.config/nvim/lua/plugins/plug-orgmode.lua
     luafile ~/.config/nvim/lua/built-in-lsp.lua
     source ~/.config/nvim/plug-config/lsp-saga.vim
     source ~/.config/nvim/plug-config/lsp-config.vim
