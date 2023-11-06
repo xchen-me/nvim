@@ -205,7 +205,7 @@ nnoremap <silent> <leader>oT :call VSCodeNotify('workbench.action.terminal.toggl
 nnoremap <silent> <leader>sd :call VSCodeNotify('file-browser.open')<CR>
 nnoremap <silent> <leader>sb :call VSCodeNotify('workbench.action.findInFiles')<CR>
 nnoremap <silent> <leader>sf :call VSCodeNotify('workbench.action.quickOpen')<CR>
-nnoremap <silent> <leader>st :call VSCodeNotify('workbench.action.findInFiles')<CR>
+" nnoremap <silent> <leader>st :call VSCodeNotify('workbench.action.findInFiles')<CR>
 nnoremap <silent> <leader>sp :call VSCodeNotify('workbench.action.replaceInFiles')<CR>
 nnoremap <silent> <leader>sm :call VSCodeNotify('bookmarks.listFromAllFiles')<CR>
 

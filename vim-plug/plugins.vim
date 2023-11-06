@@ -46,6 +46,9 @@ call plug#begin('~/.config/nvim/autoload/plugged')
       Plug 'vim-airline/vim-airline'
       Plug 'vim-airline/vim-airline-themes'
     endif
+    if !has('gui_running')
+      " Plug 'godlygeek/csapprox' "Make gvim-only colorschemes work transparently in terminal vim
+    endif
     " Plug 'norcalli/nvim-colorizer.lua'
     Plug 'mhinz/vim-startify'
     Plug 'liuchengxu/vim-which-key'
@@ -57,7 +60,7 @@ call plug#begin('~/.config/nvim/autoload/plugged')
       Plug 'glepnir/lspsaga.nvim'
       " Plug 'onsails/lspkind-nvim'
     else
-      Plug 'neoclide/coc.nvim', {'branch': 'release'} 
+      " Plug 'neoclide/coc.nvim', {'branch': 'release'} 
     endif
     " better search
     if has('nvim')
@@ -68,8 +71,10 @@ call plug#begin('~/.config/nvim/autoload/plugged')
       " Plug 'nvim-telescope/telescope-media-files.nvim' "works for linux
       Plug 'kyazdani42/nvim-tree.lua'
 
+
       " syntax highlighting; need to TSInstall {language} afterwards, e.g.,
       " TSInstall {python, julia, html, lua}
+      " Plug 'nvim-treesitter/nvim-treesitter'
       Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
     else
       Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -98,8 +103,8 @@ call plug#begin('~/.config/nvim/autoload/plugged')
     Plug 'vim-pandoc/vim-pandoc'
     Plug 'vim-pandoc/vim-pandoc-syntax'
     Plug 'vim-pandoc/vim-rmarkdown'
-    Plug 'lervag/vimtex'
-    Plug 'axvr/org.vim'               " better syntax highlighting for org files
+    " Plug 'axvr/org.vim'               " better syntax highlighting for org files
+    Plug 'nvim-orgmode/orgmode'
     Plug 'JuliaEditorSupport/julia-vim'
 
     " better compile

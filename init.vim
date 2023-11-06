@@ -17,13 +17,14 @@ if !exists('g:vscode')
     " luafile ~/.config/nvim/lua/plugins/telescope-config.lua
     source ~/.config/nvim/plug-config/treesitter.vim
     luafile ~/.config/nvim/lua/plugins/plug-treesitter.lua
+    luafile ~/.config/nvim/lua/plugins/plug-orgmode.lua
     luafile ~/.config/nvim/lua/plugins/galaxyline-config.lua
     " source ~/.config/nvim/plug-config/barbar.vim "tabline
-    luafile ~/.config/nvim/lua/plugins/nvimtree-config.lua
-    source ~/.config/nvim/plug-config/nvimtree-config.vim
+    " luafile ~/.config/nvim/lua/plugins/nvimtree-config.lua
+    " source ~/.config/nvim/plug-config/nvimtree-config.vim
   else
     source $HOME/.config/nvim/plug-config/fzf.vim
-    source $HOME/.config/nvim/themes/airline.vim 
+    source $HOME/.config/nvim/themes/airline.vim
   endif
 
   if has('nvim')
@@ -43,7 +44,7 @@ if !exists('g:vscode')
     luafile ~/.config/nvim/lua/lsp/vim-ls.lua
     " end
   else
-    source $HOME/.config/nvim/plug-config/coc.vim
+    " source $HOME/.config/nvim/plug-config/coc.vim
   endif
 
   source $HOME/.config/nvim/plug-config/start-screen.vim

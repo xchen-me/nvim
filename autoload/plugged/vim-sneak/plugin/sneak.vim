@@ -61,7 +61,7 @@ func! sneak#cancel() abort
   augroup sneak
     autocmd!
   augroup END
-  if maparg('<esc>', 'n') =~# 'sneak#cancel' "teardown temporary <esc> mapping
+  if maparg('<esc>', 'n') =~# "'s'\\.'neak#cancel'"  " Remove temporary mapping.
     silent! unmap <esc>
   endif
   return ''
@@ -69,26 +69,35 @@ endf
 
 " Entrypoint for `s`.
 func! sneak#wrap(op, inputlen, reverse, inclusive, label) abort
-  let [cnt, reg] = [v:count1, v:register] "get count and register before doing _anything_, else they get overwritten.
-  let is_similar_invocation = a:inputlen == s:st.inputlen && a:inclusive == s:st.inclusive
+  let save_cmdheight = &cmdheight
+  try
+    if &cmdheight < 1
+      set cmdheight=1
+    endif
 
-  if g:sneak#opt.s_next && is_similar_invocation && (sneak#util#isvisualop(a:op) || empty(a:op)) && sneak#is_sneaking()
-    " Repeat motion (clever-s).
-    call s:rpt(a:op, a:reverse)
-  elseif a:op ==# 'g@' && !empty(s:st.opfunc_st) && !empty(s:st.opfunc) && s:st.opfunc ==# &operatorfunc
-    " Replay state from the last 'operatorfunc'.
-    call sneak#to(a:op, s:st.opfunc_st.input, s:st.opfunc_st.inputlen, cnt, reg, 1, s:st.opfunc_st.reverse, s:st.opfunc_st.inclusive, s:st.opfunc_st.label)
-  else
-    if exists('#User#SneakEnter')
-      doautocmd <nomodeline> User SneakEnter
-      redraw
+    let [cnt, reg] = [v:count1, v:register] "get count and register before doing _anything_, else they get overwritten.
+    let is_similar_invocation = a:inputlen == s:st.inputlen && a:inclusive == s:st.inclusive
+
+    if g:sneak#opt.s_next && is_similar_invocation && (sneak#util#isvisualop(a:op) || empty(a:op)) && sneak#is_sneaking()
+      " Repeat motion (clever-s).
+      call s:rpt(a:op, a:reverse)
+    elseif a:op ==# 'g@' && !empty(s:st.opfunc_st) && !empty(s:st.opfunc) && s:st.opfunc ==# &operatorfunc
+      " Replay state from the last 'operatorfunc'.
+      call sneak#to(a:op, s:st.opfunc_st.input, s:st.opfunc_st.inputlen, cnt, reg, 1, s:st.opfunc_st.reverse, s:st.opfunc_st.inclusive, s:st.opfunc_st.label)
+    else
+      if exists('#User#SneakEnter')
+        doautocmd <nomodeline> User SneakEnter
+        redraw
+      endif
+      " Prompt for input.
+      call sneak#to(a:op, s:getnchars(a:inputlen, a:op), a:inputlen, cnt, reg, 0, a:reverse, a:inclusive, a:label)
+      if exists('#User#SneakLeave')
+        doautocmd <nomodeline> User SneakLeave
+      endif
     endif
-    " Prompt for input.
-    call sneak#to(a:op, s:getnchars(a:inputlen, a:op), a:inputlen, cnt, reg, 0, a:reverse, a:inclusive, a:label)
-    if exists('#User#SneakLeave')
-      doautocmd <nomodeline> User SneakLeave
-    endif
-  endif
+  finally
+    let &cmdheight = save_cmdheight
+  endtry
 endf
 
 " Repeats the last motion.
@@ -123,7 +132,7 @@ func! sneak#to(op, input, inputlen, count, register, repeatmotion, reverse, incl
     norm! gv
   endif
 
-  " [count] means 'skip this many' _only_ for operators/repeat-motion/2-char-search
+  " [count] means 'skip to this match' _only_ for operators/repeat-motion/1-char-search
   "   sanity check: max out at 999, to avoid searchpos() OOM.
   let skip = (is_op || a:repeatmotion || a:inputlen < 2) ? min([999, a:count]) : 0
 
@@ -132,7 +141,7 @@ func! sneak#to(op, input, inputlen, count, register, repeatmotion, reverse, incl
   let l:scope_pattern = '' " pattern used to highlight the vertical 'scope'
   let l:match_bounds  = ''
 
-  "scope to a column of width 2*(v:count1) _except_ for operators/repeat-motion/1-char-search
+  "scope to a column of width 2*(v:count1)+1 _except_ for operators/repeat-motion/1-char-search
   if ((!skip && a:count > 1) || max(bounds)) && !is_op
     if !max(bounds) "derive bounds from count (_logical_ bounds highlighted in 'scope')
       let bounds[0] = max([0, (virtcol('.') - a:count - 1)])
@@ -212,14 +221,14 @@ func! sneak#to(op, input, inputlen, count, register, repeatmotion, reverse, incl
 
   call s:attach_autocmds()
 
-  "highlight actual matches at or below the cursor position
+  "highlight actual matches at or beyond the cursor position
   "  - store in w: because matchadd() highlight is per-window.
   let w:sneak_hl_id = matchadd('Sneak',
         \ (s.prefix).(s.match_pattern).(s.search).'\|'.curln_pattern.(s.search))
 
-  "Let user deactivate with <esc>
+  " Clear with <esc>. Use a funny mapping to avoid false positives. #287
   if (has('nvim') || has('gui_running')) && maparg('<esc>', 'n') ==# ""
-    nmap <expr> <silent> <esc> sneak#cancel() . "\<esc>"
+    nnoremap <expr> <silent> <esc> call('s'.'neak#cancel',[]) . "\<esc>"
   endif
 
   " Operators always invoke label-mode.
@@ -299,7 +308,7 @@ endf
 
 func! s:getnchars(n, mode) abort
   let s = ''
-  echo g:sneak#opt.prompt
+  echo g:sneak#opt.prompt | redraw
   for i in range(1, a:n)
     if sneak#util#isvisualop(a:mode) | exe 'norm! gv' | endif "preserve selection
     let c = sneak#util#getchar()

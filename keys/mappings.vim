@@ -88,6 +88,7 @@ if !exists('g:vscode')
 
   " Alternate way to save
   nnoremap <C-s> :w<CR>
+  inoremap <C-s> <Esc>:w<CR>i
   nnoremap <D-s> :w<CR>
   nnoremap <leader>fs :w<CR>
 
@@ -282,7 +283,7 @@ nmap <S-M-left> vh
 noremap <D-left> ^
 noremap <D-right> $
 noremap <C-a> ^
-noremap <C-e> $
+" noremap <C-e> $
 noremap <D-S-left> v^
 noremap <D-S-right> v$
 noremap <D-S-h> v^
@@ -294,7 +295,7 @@ if !exists('g:vscode')
   inoremap <C-l> <C-o>M
   inoremap <C-^> <C-o><C-^>
   " inoremap <C-e> <C-o><C-^>
-  inoremap <D-z> <C-o>u
+  inoremap <D-z> <C-o>:u
 endif
 nnoremap <D-z> u
 
@@ -323,4 +324,7 @@ nnoremap g- <C-x>
 " depreciating soon
 " nnoremap <Leader>o o<Esc>
 " nnoremap <Leader>O O<Esc>
+
+" orgmode specific
+autocmd Filetype org imap <Enter> <C-CR>
 
